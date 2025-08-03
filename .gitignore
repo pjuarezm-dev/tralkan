@@ -154,5 +154,6 @@ psd
 thumb
 sketch
 *.env
+*.env.*
 *.mp4
 # End of https://www.toptal.com/developers/gitignore/api/react,node
