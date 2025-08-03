@@ -103,3 +103,15 @@ Variables reemplazables: `{{name}}`, `{{email}}`, `{{message}}`
 ## 📬 Contacto
 
 ¿Tienes dudas o comentarios? Contáctanos en nuestro formulario de contacto o siguenos a través de Instragram en [@tralkan.comic](https://www.instagram.com/tralkan.comic/)
+
+---
+
+## 🖼️ Licencia del contenido visual
+
+Todas las ilustraciones, logotipos y material gráfico presentes en este repositorio son propiedad de los autores de **Tralkán Comic**.
+
+**Queda estrictamente prohibida su reproducción, modificación o redistribución sin autorización expresa.**
+
+El código fuente del sitio puede estar bajo una licencia de código abierto, pero el contenido visual está sujeto a **uso privado no comercial**.
+
+© Tralkán Comic. Todos los derechos reservados.
