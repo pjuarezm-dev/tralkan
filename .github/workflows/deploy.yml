@@ -2,7 +2,7 @@ name: Deploy React + Backend via FTP (seguro)
 
 on:
   push:
-    branches: [main]
+    branches: [deploy]
 
 jobs:
   deploy:
