@@ -1,0 +1,62 @@
+name: Deploy React + Backend via FTP
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FRONT_DIR: frontend # carpeta con el React project
+      BACK_DIR: backend # nueva carpeta con server.js, package.json…
+      NODE_VERSION: 18
+
+    steps:
+      # 1) Obtiene el código
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      # 2) Instala Node para todo el job
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # ---------- FRONTEND ----------
+      - name: Install front-end dependencies
+        working-directory: ${{ env.FRONT_DIR }}
+        run: npm ci
+
+      - name: Build React (Vite)
+        working-directory: ${{ env.FRONT_DIR }}
+        run: npm run build # genera tralkan/dist
+
+      # ---------- BACKEND ----------
+      - name: Install back-end dependencies (prod-only)
+        working-directory: ${{ env.BACK_DIR }}
+        run: |
+          npm ci --omit=dev           # solo dependencias de producción
+          npm prune --omit=dev        # borra cualquier devDependency residual
+
+      # ---------- DEPLOY FRONT ----------
+      - name: Deploy dist/ via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Carpeta pública donde sirves la SPA (ej. public_html/)
+          server-dir: ${{ secrets.FTP_REMOTE_DIR_FRONT || '/' }}
+          local-dir: ${{ env.FRONT_DIR }}/dist/
+
+      # ---------- DEPLOY BACK ----------
+      - name: Deploy backend/ via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Donde Plesk esperará tu “Application root” ( /backend )
+          server-dir: ${{ secrets.FTP_REMOTE_DIR_BACK }}
+          local-dir: ${{ env.BACK_DIR }}/
