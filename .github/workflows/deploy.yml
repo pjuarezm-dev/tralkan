@@ -1,4 +1,4 @@
-name: Deploy React + Backend via FTP
+name: Deploy React + Backend via FTP (seguro)
 
 on:
   push:
@@ -8,55 +8,53 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      FRONT_DIR: frontend # carpeta con el React project
-      BACK_DIR: backend # nueva carpeta con server.js, package.json…
+      FRONT_DIR: frontend
+      BACK_DIR: backend
       NODE_VERSION: 18
 
     steps:
-      # 1) Obtiene el código
-      - name: Checkout repo
+      # 1. Checkout del código
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2) Instala Node para todo el job
-      - name: Setup Node
+      # 2. Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      # ---------- FRONTEND ----------
+      # 3. Build del frontend
       - name: Install front-end dependencies
         working-directory: ${{ env.FRONT_DIR }}
         run: npm ci
 
-      - name: Build React (Vite)
+      - name: Build front-end (Vite)
         working-directory: ${{ env.FRONT_DIR }}
-        run: npm run build # genera tralkan/dist
+        run: npm run build
 
-      # ---------- BACKEND ----------
-      - name: Install back-end dependencies (prod-only)
+      # 4. Prepara backend
+      - name: Install back-end dependencies (production only)
         working-directory: ${{ env.BACK_DIR }}
         run: |
-          npm ci --omit=dev           # solo dependencias de producción
-          npm prune --omit=dev        # borra cualquier devDependency residual
+          npm ci --omit=dev
+          npm prune --omit=dev
 
-      # ---------- DEPLOY FRONT ----------
-      - name: Deploy dist/ via FTP
+      # 5. Deploy FRONTEND con usuario ftp_front
+      - name: Deploy frontend to public_html
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          # Carpeta pública donde sirves la SPA (ej. public_html/)
-          server-dir: ${{ secrets.FTP_REMOTE_DIR_FRONT || '/' }}
+          server: ${{ secrets.FTP_FRONT_HOST }}
+          username: ${{ secrets.FTP_FRONT_USER }}
+          password: ${{ secrets.FTP_FRONT_PASS }}
+          server-dir: /
           local-dir: ${{ env.FRONT_DIR }}/dist/
 
-      # ---------- DEPLOY BACK ----------
-      - name: Deploy backend/ via FTP
+      # 6. Deploy BACKEND con usuario ftp_back
+      - name: Deploy backend to /backend
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          # Donde Plesk esperará tu “Application root” ( /backend )
-          server-dir: ${{ secrets.FTP_REMOTE_DIR_BACK }}
+          server: ${{ secrets.FTP_BACK_HOST }}
+          username: ${{ secrets.FTP_BACK_USER }}
+          password: ${{ secrets.FTP_BACK_PASS }}
+          server-dir: /
           local-dir: ${{ env.BACK_DIR }}/
