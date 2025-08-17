@@ -8,16 +8,19 @@ require("dotenv").config();
 const rateLimit = require("express-rate-limit");
 
 const limiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minuto
-  max: 5, // máx 5 envíos por IP por minuto
+  windowMs: 60 * 1000,
+  max: 5,
   message: { error: "Demasiados intentos, espera un momento." },
 });
 
 const app = express();
+const router = express.Router();
+
 app.use(cors());
 app.use(bodyParser.json());
-app.use("/send-email", limiter);
+router.use("/send-email", limiter);
 
+// 🔹 Configurar transporte de correo
 const transporter = nodemailer.createTransport({
   host: "mail.tralkancomic.cl",
   port: 465,
@@ -28,7 +31,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// 🔹 Función para cargar plantillas HTML dinámicamente
+// 🔹 Cargar plantillas HTML dinámicamente
 const loadHtmlTemplate = (filePath, variables) => {
   const path = require("path");
   const templatePath = path.join(__dirname, filePath);
@@ -40,7 +43,7 @@ const loadHtmlTemplate = (filePath, variables) => {
   return template;
 };
 
-// 🔹 Función para enviar correo
+// 🔹 Enviar correo
 const sendEmail = async (to, subject, html) => {
   try {
     await transporter.sendMail({
@@ -58,38 +61,26 @@ const sendEmail = async (to, subject, html) => {
   }
 };
 
-// 🔹 Ruta para enviar correo con validación de reCAPTCHA
-app.post("/send-email", async (req, res) => {
+// 🔹 Ruta GET de verificación
+router.get("/send-email", (req, res) => {
+  res.send("✅ API funcionando desde router /");
+});
+
+// 🔹 Ruta POST para enviar el correo
+router.post("/send-email", async (req, res) => {
+  console.log("📥 Solicitud recibida:", req.body);
+
   try {
     if (req.body.trap && req.body.trap.trim() !== "") {
       return res.status(400).json({ error: "Bot detectado." });
     }
+
     const { name, email, message, token } = req.body;
 
     if (!name || !email || !message || !token) {
       return res.status(400).json({ error: "Faltan campos obligatorios" });
     }
-    if (req.body.trap && req.body.trap.trim() !== "") {
-      return res.status(400).json({ error: "Bot detectado." });
-    }
-    const secretKey = process.env.SECRETKEY;
 
-    // Validación reCAPTCHA
-    const recaptchaResponse = await fetch(
-      "https://www.google.com/recaptcha/api/siteverify",
-      {
-        method: "POST",
-        body: new URLSearchParams({ secret: secretKey, response: token }),
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      }
-    );
-    const recaptchaData = await recaptchaResponse.json();
-
-    if (!recaptchaData.success || recaptchaData.score < 0.5) {
-      return res.status(400).json({ error: "Error de reCAPTCHA" });
-    }
-
-    // Preparar contenido de correos
     const htmlContacto = loadHtmlTemplate("templates/contacto.html", {
       name,
       email,
@@ -101,7 +92,8 @@ app.post("/send-email", async (req, res) => {
       message,
     });
 
-    // Enviar correos
+    console.log("✉️ Enviando correo a:", process.env.MAIL_TO);
+
     const email1Sent = await sendEmail(
       process.env.MAIL_TO,
       "Nuevo mensaje de tralkancomic.cl",
@@ -123,6 +115,9 @@ app.post("/send-email", async (req, res) => {
     res.status(500).json({ error: "Error en el servidor" });
   }
 });
+
+// Montar router en la raíz
+app.use("/api", router);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>

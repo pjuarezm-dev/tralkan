@@ -103,7 +103,15 @@ Una vez que el werkén se retira, Nawel, con curiosidad, pregunta a su abuelo:</
     <p> —Un wekufe...</p>
     <p>Y el misterio se cierne sobre los ojos expectantes de Nawel, dejando la historia en suspenso.</p>`,
     video: "tumpulkawe",
-    images: [N2Tumpulkawe01, N2Tumpulkawe02, N2Tumpulkawe03, N3Tumpulkawe04, N2Tumpulkawe05, N2Tumpulkawe06, N2Tumpulkawe07],
+    images: [
+      N2Tumpulkawe01,
+      N2Tumpulkawe02,
+      N2Tumpulkawe03,
+      N3Tumpulkawe04,
+      N2Tumpulkawe05,
+      N2Tumpulkawe06,
+      N2Tumpulkawe07,
+    ],
   },
   {
     title: "Lalín Kushe",
@@ -121,8 +129,17 @@ Una vez que el werkén se retira, Nawel, con curiosidad, pregunta a su abuelo:</
     <p>—Es que no sé hilar, y tengo que aprender —respondió la muchacha.</p>
     <p>Con mucha paciencia, la araña le enseñó a hilar. Pasaron muchos días hasta que finalmente lo logró. Desde entonces, la joven enseñó a sus hijas, y sus hijas a sus descendientes. Por eso se dice que la labor del hilado y la textilería son una herencia de la gran araña antigua.</p>
 `,
-    video: null,
-    images: [N6Llallin01, N6Llallin02, N6Llallin03, N6Llallin04, N6Llallin05, N6Llallin06, N6Llallin07, N6Llallin08],
+    video: "llallin-kushe",
+    images: [
+      N6Llallin01,
+      N6Llallin02,
+      N6Llallin03,
+      N6Llallin04,
+      N6Llallin05,
+      N6Llallin06,
+      N6Llallin07,
+      N6Llallin08,
+    ],
   },
   {
     title: "Witranalwe",
@@ -143,9 +160,17 @@ Una vez que el werkén se retira, Nawel, con curiosidad, pregunta a su abuelo:</
 El abuelo asintió con aprobación y respondió:</p>
     <p>—Tienes toda la razón, mi pequeño. Es mejor actuar con respeto hacia lo que no comprendemos. Pero ahora, ve donde tu abuela; ella tiene un epew para ti.
 </p>`,
-    video: "witranalwe",
-    images: [N3Witranalwe01, N3Witranalwe02, N3Witranalwe03, N3Witranalwe04, N3Witranalwe05, N3Witranalwe06, N3Witranalwe07],
-  }, 
+    video: "witranalhue",
+    images: [
+      N3Witranalwe01,
+      N3Witranalwe02,
+      N3Witranalwe03,
+      N3Witranalwe04,
+      N3Witranalwe05,
+      N3Witranalwe06,
+      N3Witranalwe07,
+    ],
+  },
   {
     title: "Wekufe",
     id: 4,
@@ -178,7 +203,20 @@ El abuelo asintió con aprobación y respondió:</p>
     <p>—Eso te lo contaré esta noche, junto al fogón. Ahora debemos terminar nuestro trabajo.</p>
     <p>El niño asintió, aunque su mente ya estaba llena de preguntas sobre el witranalwe.</p>`,
     video: "wekufe",
-    images: [N4Wekufe01, N4Wekufe02, N4Wekufe03, N4Wekufe04, N4Wekufe05, N4Wekufe06, N4Wekufe07, N4Wekufe08, N4Wekufe09, N4Wekufe10, N4Wekufe11, N4Wekufe12],
+    images: [
+      N4Wekufe01,
+      N4Wekufe02,
+      N4Wekufe03,
+      N4Wekufe04,
+      N4Wekufe05,
+      N4Wekufe06,
+      N4Wekufe07,
+      N4Wekufe08,
+      N4Wekufe09,
+      N4Wekufe10,
+      N4Wekufe11,
+      N4Wekufe12,
+    ],
   },
   {
     title: "Nahuel",
@@ -195,8 +233,17 @@ El abuelo asintió con aprobación y respondió:</p>
     <p>Luego de escuchar esta historia, una sensación de agradecimiento recorrió el corazón del niño y solo atinó a abrazar a su madre. </p>
     <p>Mientras se abrazaban le madre le dice, anda donde tu abuelita que te está tejiendo un macün.</p>
 `,
-    video: null,
-    images: [N7Nahuel01, N7Nahuel02, N7Nahuel03, N7Nahuel04, N7Nahuel05, N7Nahuel06, N7Nahuel07, N7Nahuel08],
+    video: "nahuel",
+    images: [
+      N7Nahuel01,
+      N7Nahuel02,
+      N7Nahuel03,
+      N7Nahuel04,
+      N7Nahuel05,
+      N7Nahuel06,
+      N7Nahuel07,
+      N7Nahuel08,
+    ],
   },
   {
     title: "Cherrufe",
@@ -209,7 +256,16 @@ El abuelo asintió con aprobación y respondió:</p>
     <p>Desde entonces, el magma de los volcanes encontró un dueño, manifestándose en erupciones gigantescas. Con forma de persona, el Cherrufe se deja ver y escuchar, bramando entre la lava y exigiendo carne humana con su voz de muerte incandescente. No deja otra opción que ofrecer sacrificios, en los que jóvenes mapuche se entregan para salvar a sus comunidades. A cambio, el Cherrufe se calma, pero no antes de lanzar, en un acto macabro, las cabezas ardientes de sus ofrendas.</p>
     <p>Cuentan que, en la última erupción del Ruka Pillán, el Cherrufe descendió sobre el tronco de un árbol en llamas, extendiendo sus brazos y arrasando con todo a su paso. Sus gritos y maldiciones sacudieron las entrañas de la Ñuke Mapu, y todo ser vivo buscó refugio.</p>`,
     video: "cherrufe",
-    images: [N5Cherrufe01, N5Cherrufe02, N5Cherrufe03, N5Cherrufe04, N5Cherrufe05, N5Cherrufe06, N5Cherrufe07, N5Cherrufe08],
+    images: [
+      N5Cherrufe01,
+      N5Cherrufe02,
+      N5Cherrufe03,
+      N5Cherrufe04,
+      N5Cherrufe05,
+      N5Cherrufe06,
+      N5Cherrufe07,
+      N5Cherrufe08,
+    ],
   },
   {
     title: "Piedra Retxikura",
@@ -221,9 +277,15 @@ El abuelo asintió con aprobación y respondió:</p>
     <p>Intrigado, Nahuel no pudo evitar preguntar: "Abuelo, ¿qué es la Piedra Retxikura?"</p>
     <p>El anciano, con la mirada perdida en el horizonte, comenzó a relatar una antigua historia de la tradición oral mapuche. Explicó que la Piedra Retxikura del Mallolafquén alberga el espíritu de una machi que quedó atrapada durante el gran diluvio. Esta roca es sagrada y sanadora, pues se cree que los espíritus de los antepasados, quienes perecieron en la gran batalla entre Treng Treng Vilu y Kay Kay Vilu, quedaron atrapados en piedras. La importancia de cada piedra se mide por su tamaño, y la Piedra Retxikura, con el espíritu de la machi, es venerada por su profunda conexión con Ngenechén. Se dice que ofrece protección y sanación a aquellos que la respetan.</p>
 `,
-    video: null,
-    images: [N8Retxikura01, N8Retxikura02, N8Retxikura03, N8Retxikura04, N8Retxikura05],
-  },  
+    video: "piedra-retxikura",
+    images: [
+      N8Retxikura01,
+      N8Retxikura02,
+      N8Retxikura03,
+      N8Retxikura04,
+      N8Retxikura05,
+    ],
+  },
   {
     title: "Tralkán",
     id: 8,
@@ -242,7 +304,7 @@ El abuelo asintió con aprobación y respondió:</p>
       <p>Los ojos del niño brillaban con curiosidad y emoción, aunque aún no comprendía del todo las palabras de su abuelo. El anciano prosiguió:</p>
       <p>—Muchos grandes toquis llevaron una piedra como esta, mi pequeño: Lautaro, Caupolicán, Calfucura… guerreros y estrategas que guiaron a nuestro pueblo. Hoy, al verte, siento que esa piedra ha elegido bien. Veo en ti al futuro toqui que la portará con honor.</p>
       <p>El niño, aunque no entendía el alcance de aquellas palabras, sostuvo la piedra con orgullo. Mientras tanto, el abuelo, más allá de la sombra de su nieto, ya vislumbraba al gran estratega en que su pequeño pichiwentru se convertiría.</p>`,
-    video: null,
+    video: "tralkan",
     images: [N1Tralkan01, N1Tralkan02, N1Tralkan03, N1Tralkan04, N1Tralkan05],
   },
   {
@@ -259,7 +321,16 @@ El abuelo asintió con aprobación y respondió:</p>
       <p>Mientras su padre, desde un rincón replica: yo también me sé una historia!.</p>
 `,
     video: "machi-llancahue",
-    images: [N9Machi01, N9Machi02, N9Machi03, N9Machi04, N9Machi05, N9Machi06, N9Machi07, N9Machi08],
+    images: [
+      N9Machi01,
+      N9Machi02,
+      N9Machi03,
+      N9Machi04,
+      N9Machi05,
+      N9Machi06,
+      N9Machi07,
+      N9Machi08,
+    ],
   },
 ];
 export default storiesData;

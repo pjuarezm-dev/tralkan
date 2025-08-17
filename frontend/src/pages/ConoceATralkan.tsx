@@ -1,4 +1,5 @@
 import { ArrowLeft, Star, Heart, Book, Users, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useFileExists } from "@/hooks/use-fileexists.tsx";
 import { Link } from "react-router-dom";
 import { useState } from "react";  
 import { storiesData } from "../assets/data/stories.js"; 
@@ -34,7 +35,7 @@ const ConoceATralkan = () => {
 
   const handleFinishReading = () => {
     setShowCarousel(true);
-  };
+  }; 
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-10 to-red-50">
@@ -91,8 +92,9 @@ const ConoceATralkan = () => {
                       className="bg-blue-800 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-900 transition-colors"
                     >
                       Relato
-                    </button> 
-                     {story.video && (
+                    </button>  
+                     {
+                     useFileExists(`/relato/${story.video}.mp4`) && (
                         <a
                           href={`/relato/${story.video}`}
                           target="_blank"
@@ -126,7 +128,7 @@ const ConoceATralkan = () => {
             {/* Modal Content */}
             <div className="p-6 lg:flex max-h-[calc(90vh-120px)]">
               {/* Desktop Layout (lg and up) */}
-              <div className="hidden lg:flex gap-8 h-full h-[calc(90vh-120px)]">  
+              <div className="hidden lg:flex gap-8 h-[calc(90vh-120px)]">  
                 
                 {/* Image Carousel - Left Column */}
                 <div className="flex-1 flex flex-col"> 
