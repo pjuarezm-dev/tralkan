@@ -34,8 +34,6 @@ export function useFileExists(url?: string | null) {
     })();
 
     return () => ac.abort();
-  }, [url]);
-
-  console.log(url, exists);
+  }, [url]); 
   return exists;
 }
